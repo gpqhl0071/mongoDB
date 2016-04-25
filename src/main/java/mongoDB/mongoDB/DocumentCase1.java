@@ -1,6 +1,7 @@
 package mongoDB.mongoDB;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -16,19 +17,19 @@ import com.mongodb.client.model.Filters;
 /**
  * MongoDB api
  * 参考:http://api.mongodb.org/java/3.2/
- *
+ * 对文档的增删改查操作
  */
-public class Demo {
+public class DocumentCase1 {
 
 	public static String ip = "192.168.1.95";
 	public static int port = 27017;
 
 	public static void main(String args[]) {
-//		insert();
+		insert();
 //		queryAll();
 //		queryByName("小黄");
 //		update();
-		del();
+//		del();
 	}
 
 	/**
@@ -113,7 +114,8 @@ public class Demo {
 			List<Document> documents = new ArrayList<Document>();
 			for (int i = 0; i < 100; i++) {
 				Document document = new Document("name", "李" + i).append("age", (int) (Math.random() * 50))
-						.append("address", "黑龙江").append("scope", (int) (Math.random() * 100));
+						.append("address", "黑龙江").append("scope", (int) (Math.random() * 100))
+						.append("inputTime", new Date());
 				documents.add(document);
 			}
 			
@@ -170,4 +172,5 @@ public class Demo {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		}
 	}
+	
 }
