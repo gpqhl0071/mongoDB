@@ -1,6 +1,7 @@
 package mongoDB.mongoDB;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -24,8 +27,8 @@ public class DocumentCase {
 	public static int port = 27017;
 
 	public static void main(String args[]) {
-		insert();
-		// queryAll();
+		// insert();
+		queryAll();
 		// queryByName("小黄");
 		// update();
 		// del();
@@ -36,12 +39,27 @@ public class DocumentCase {
 	 */
 	public static void queryAll() {
 		try {
+			
+	        // 创建MongoDB服务器地址对象
+	        ServerAddress address = new ServerAddress(ip, port);
+	        // 创建MongoDB服务器用户验证对象
+	        MongoCredential credential = MongoCredential.createCredential("admin",
+	                "admin",
+	                "admin".toCharArray());
+			
 			// 连接到 mongodb 服务
-			MongoClient mongoClient = new MongoClient(ip, port);
+			MongoClient mongoClient = new MongoClient(address, Arrays.asList(credential));
 
 			// 连接到数据库
 			MongoDatabase mongoDatabase = mongoClient.getDatabase("school");
 			MongoCollection<Document> collection = mongoDatabase.getCollection("student");
+			
+			/*// 连接到 mongodb 服务
+			MongoClient mongoClient = new MongoClient(ip, port);
+
+			// 连接到数据库
+			MongoDatabase mongoDatabase = mongoClient.getDatabase("school");
+			MongoCollection<Document> collection = mongoDatabase.getCollection("student");*/
 
 			// 检索所有文档
 			/**
