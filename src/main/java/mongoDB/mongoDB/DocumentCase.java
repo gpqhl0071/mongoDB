@@ -18,7 +18,7 @@ import com.mongodb.client.model.Filters;
 /**
  * MongoDB api 参考:http://api.mongodb.org/java/3.2/ 对文档的增删改查操作
  */
-public class DocumentCase1 {
+public class DocumentCase {
 
 	public static String ip = "192.168.1.95";
 	public static int port = 27017;
