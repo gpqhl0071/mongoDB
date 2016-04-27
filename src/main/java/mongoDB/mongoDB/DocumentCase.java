@@ -27,11 +27,11 @@ public class DocumentCase {
 	public static int port = 27017;
 
 	public static void main(String args[]) {
-		// insert();
-		queryAll();
-		// queryByName("小黄");
-		// update();
-		// del();
+//		 insert();
+//		queryAll();
+		 queryByName("daxiang50");
+//		 update();
+//		 del();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class DocumentCase {
 	public static void queryAll() {
 		try {
 			
-	        // 创建MongoDB服务器地址对象
+	        /*// 创建MongoDB服务器地址对象
 	        ServerAddress address = new ServerAddress(ip, port);
 	        // 创建MongoDB服务器用户验证对象
 	        MongoCredential credential = MongoCredential.createCredential("admin",
@@ -52,14 +52,14 @@ public class DocumentCase {
 
 			// 连接到数据库
 			MongoDatabase mongoDatabase = mongoClient.getDatabase("school");
-			MongoCollection<Document> collection = mongoDatabase.getCollection("student");
+			MongoCollection<Document> collection = mongoDatabase.getCollection("student");*/
 			
-			/*// 连接到 mongodb 服务
+			// 连接到 mongodb 服务
 			MongoClient mongoClient = new MongoClient(ip, port);
 
 			// 连接到数据库
 			MongoDatabase mongoDatabase = mongoClient.getDatabase("school");
-			MongoCollection<Document> collection = mongoDatabase.getCollection("student");*/
+			MongoCollection<Document> collection = mongoDatabase.getCollection("student");
 
 			// 检索所有文档
 			/**
@@ -118,7 +118,7 @@ public class DocumentCase {
 
 			List<Document> documents = new ArrayList<Document>();
 			for (int i = 0; i < 100; i++) {
-				Document document = new Document("name", "李" + i).append("age", (int) (Math.random() * 50))
+				Document document = new Document("name", "daxiang" + i).append("age", (int) (Math.random() * 50))
 						.append("address", "黑龙江").append("scope", (int) (Math.random() * 100))
 						.append("inputTime", DateUtils.addDays(new Date(), i));
 				documents.add(document);
@@ -143,7 +143,7 @@ public class DocumentCase {
 			MongoCollection<Document> collection = mongoDatabase.getCollection("student");
 
 			// 更新文档 将文档中likes=100的文档修改为likes=200
-			collection.updateMany(Filters.eq("name", "李1"), new Document("$set", new Document("scope", 90)));
+			collection.updateMany(Filters.eq("name", "daxiang50"), new Document("$set", new Document("scope", 100)));
 
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -164,7 +164,7 @@ public class DocumentCase {
 			MongoCollection<Document> collection = mongoDatabase.getCollection("student");
 
 			// 删除符合条件的第一个文档
-			collection.deleteOne(Filters.eq("name", "李2"));
+			collection.deleteOne(Filters.eq("name", "daxiang50"));
 
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
